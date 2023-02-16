@@ -1,0 +1,28 @@
+.save-button {
+  margin-top: 8px;
+  margin-bottom: 37px;
+  padding: 11px 0 15px 0;
+  background-color: #000;
+  border: 1px solid;
+  color: #fff;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  text-align: center;
+  transition: all .2s;
+  cursor: pointer;
+}
+
+.save-button:hover {
+  opacity: 0.8;
+}
+
+@media screen and (max-width: 520px) {
+  .save-button {
+    margin-top: 1px;
+    margin-bottom: 25px;
+    padding: 14px;
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

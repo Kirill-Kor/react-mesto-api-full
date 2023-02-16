@@ -1,0 +1,11 @@
+.popup_opened {
+  display: flex;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, .5);
+  animation: fade-in .3s linear;
+
+
+
+
+
+}

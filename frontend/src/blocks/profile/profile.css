@@ -1,0 +1,30 @@
+.profile {
+  color: #FFF;
+  display: grid;
+  grid-template-columns: 150px 1fr 150px;
+  grid-template-areas:
+  "avatar info add";
+}
+
+@media screen and (max-width: 700px) {
+  .profile {
+    grid-template-columns: min-content min-content;
+    grid-template-areas:
+    "avatar info"
+    "avatar info"
+    "avatar add";
+    row-gap: 15px;
+  }
+}
+
+@media screen and (max-width: 522px) {
+  .profile {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+    "avatar"
+    "info"
+    "add";
+    justify-items: center;
+    row-gap: 0;
+  }
+}

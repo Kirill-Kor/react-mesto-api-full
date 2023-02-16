@@ -1,0 +1,9 @@
+.tooltip__title {
+    text-align: center;
+}
+
+.tooltip__image {
+    margin: 60px auto 32px auto;
+    width: 120px;
+    height: 120px;
+}
