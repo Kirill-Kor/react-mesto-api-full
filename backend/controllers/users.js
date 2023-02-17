@@ -4,7 +4,7 @@ const AuthError = require('../errors/AuthError');
 const NotFoundError = require('../errors/NotFoundError');
 const User = require('../models/user');
 
-const { JWT_SECRET } = process.env;
+const { JWT_SECRET = 'env-key' } = process.env;
 
 const {
   NOT_FOUND_STATUS_CODE,
@@ -13,6 +13,8 @@ const {
   AUTH_INCORRECT_DATA_MESSAGE,
   AUTH_ALREADY_EXISTS_CODE,
   AUTH_ALREADY_EXISTS_MESSAGE,
+  INCORRECT_DATA_ERROR_CODE,
+  INCORRECT_DATA_MESSAGE,
 } = require('../utils/errors');
 
 const getUsers = async (req, res, next) => {
@@ -55,9 +57,6 @@ const createUser = async (req, res, next) => {
     password,
   } = req.body;
 
-  const alreadyExists = await User.findOne({ email });
-  if (alreadyExists) next(new AuthError(AUTH_ALREADY_EXISTS_CODE, AUTH_ALREADY_EXISTS_MESSAGE));
-
   bcrypt.hash(password, 10)
     .then((hash) => {
       User.create({
@@ -75,8 +74,15 @@ const createUser = async (req, res, next) => {
             email: user.email,
           });
         })
-        .catch(next);
-    });
+        .catch((error) => {
+          if (error.code === 11000) {
+            next(new AuthError(AUTH_ALREADY_EXISTS_CODE, AUTH_ALREADY_EXISTS_MESSAGE));
+          } else if (error.name === 'ValidationError') {
+            next(new Error(INCORRECT_DATA_ERROR_CODE, INCORRECT_DATA_MESSAGE));
+          } else next(error);
+        });
+    })
+    .catch(next);
 };
 
 const login = (req, res, next) => {
@@ -100,12 +106,12 @@ const login = (req, res, next) => {
 };
 
 const patchUserInfo = async (req, res, next) => {
-  const { name, about, avatar } = req.body;
+  const { name, about } = req.body;
 
   try {
     const user = await User.findByIdAndUpdate(
       req.user._id,
-      { name, about, avatar },
+      { name, about },
       {
         new: true,
         runValidators: true,
@@ -115,7 +121,32 @@ const patchUserInfo = async (req, res, next) => {
       throw new NotFoundError(NOT_FOUND_STATUS_CODE, NOT_FOUND_USER_MESSAGE);
     } else res.send(user);
   } catch (error) {
-    next(error);
+    if (error.name === 'ValidationError') {
+      next(new Error(INCORRECT_DATA_ERROR_CODE, INCORRECT_DATA_MESSAGE));
+    } else next(error);
+  }
+};
+
+const patchUserAvatar = async (req, res, next) => {
+  const { avatar } = req.body;
+
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.user._id,
+      { avatar },
+      {
+        new: true,
+        runValidators: true,
+      },
+    );
+
+    if (user === null) {
+      throw new NotFoundError(NOT_FOUND_STATUS_CODE, NOT_FOUND_USER_MESSAGE);
+    } else res.send(user);
+  } catch (error) {
+    if (error.name === 'ValidationError') {
+      next(new Error(INCORRECT_DATA_ERROR_CODE, INCORRECT_DATA_MESSAGE));
+    } else next(error);
   }
 };
 
@@ -125,5 +156,6 @@ module.exports = {
   getUserById,
   createUser,
   patchUserInfo,
+  patchUserAvatar,
   login,
 };

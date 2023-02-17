@@ -16,7 +16,7 @@ const NotFoundError = require('./errors/NotFoundError');
 const { PORT = 3000 } = process.env;
 
 const app = express();
-mongoose.connect('mongodb://localhost:27017/mestodb');
+mongoose.connect('mongodb://localhost:27017/mestoapi');
 mongoose.set('strictQuery', false);
 
 app.use(bodyParser.json());
@@ -41,7 +41,7 @@ app.post('/signup', celebrate({
     password: Joi.string().required(),
     name: Joi.string().min(2).max(30),
     about: Joi.string().min(2).max(30),
-    avatar: Joi.string().regex(/^(https?:\/\/)[www.]?\S+/),
+    avatar: Joi.string().regex(/^(https?:\/\/)?([\w-]{1,32}\.[\w-]{1,32})[^\s@]*$/),
   }),
 }), createUser);
 
@@ -58,7 +58,7 @@ app.post('/signin', celebrate({
 
 app.use('/users', auth, usersRouter);
 app.use('/cards', auth, cardsRouter);
-app.use('*', (req, res, next) => {
+app.use('*', auth, (req, res, next) => {
   next(new NotFoundError(NOT_FOUND_STATUS_CODE, NOT_FOUND_PAGE));
 });
 

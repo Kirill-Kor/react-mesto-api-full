@@ -49,7 +49,6 @@ class Api {
 const api = new Api({
   baseUrl: 'https://api.kirkors.mesto.nomoredomains.work/',
   headers: {
-    origin: 'https://api.kirkors.mesto.nomoredomains.work',
     'Content-Type': 'application/json'
   }
 });
