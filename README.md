@@ -35,14 +35,14 @@
 
 <h3 name="techs">Используемые технологии</h3>
 
-Frontend
+####Frontend
 + html, css, JavaScript
 + Адаптивная вёрстка. Страница имеет мобильную версию
 + _CSS Grid Layout_ для построения сеток
 + Файловая структура БЭМ _Nested_
 + Rest Api
 
-Backend
+####Backend
 + Express.js
 + MongoDB
 
