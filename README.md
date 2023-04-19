@@ -34,15 +34,15 @@
 
 ### **Используемые технологии**
 ---
-Frontend
-+ html, css, JavaScript
-+ Адаптивная вёрстка. Страница имеет мобильную версию
-+ _CSS Grid Layout_ для построения сеток
-+ Файловая структура БЭМ _Nested_
-+ Rest Api
-Backend
-+ Express.js
-+ MongoDB
++Frontend
+++ html, css, JavaScript
+++ Адаптивная вёрстка. Страница имеет мобильную версию
+++ _CSS Grid Layout_ для построения сеток
+++ Файловая структура БЭМ _Nested_
+++ Rest Api
++Backend
+++ Express.js
+++ MongoDB
 
 ### **Ссылка на Github Pages**
 ---
