@@ -1,4 +1,5 @@
 # Проект: Место (frontend + backend)
+<a href="https://kirkors.mesto.nomoredomains.work/"><img src="./frontend/src/images/image.png" alt="Демо сайта"/></a>
 
 ## Обзор
 
