@@ -2,21 +2,20 @@
 
 ## Обзор
 
-* Описание 
-* Что реализовано
-* В планах на реализацию
-* Используемые технологии
-* Github Pages
-* QR-код
 <ul>
   <li><a href="#desc">Описание</a></li>
+  <li><a href="#realized">Что реализовано</a></li>
+  <li><a href="#todo">В планах на реализацию</a></li>
+  <li><a href="#techs">Используемые технологии</a></li>
+  <li><a href="#link">Github Pages</a></li>
+  <li><a href="#qrlink">QR-код</a></li>
+</ul>
 
-### **Описание**
----
 <h3 name="desc">Описание</h3>
+---
 Проект представляет собой страницу-профиль социальной сети _"Место"_. Проект был переписан с js на React. Хранит данные на собственном API.
 
-### **Что реализовано**
+<h3 name="realized">Что реализовано</h3>
 ---
 + Регистрация - авторизация
 + Редактирование имени и описания профиля
@@ -29,12 +28,12 @@
 + Счётчик количества лайков на записи
 + Смена аватара
 
-### **В планах на реализацию**
+<h3 name="todo">В планах на реализацию</h3>
 ---
 + Пересадка на React-router v6
 + Валидация полей при помощи React-hook-form
 
-### **Используемые технологии**
+<h3 name="techs">Используемые технологии</h3>
 ---
 Frontend
 + html, css, JavaScript
@@ -47,11 +46,11 @@ Backend
 + Express.js
 + MongoDB
 
-### **Ссылка на Github Pages**
+<h3 name="link">Ссылка на Github Pages</h3>
 ---
 <a href="https://kirkors.mesto.nomoredomains.work/"><img src="https://i.ibb.co/7XVHNgF/MAIN-PAGE.jpg" alt="MAIN-PAGE"></a>
 
-### **QR-код**
+<h3 name="qrlink">QR-код</h3>
 ---
 <img src="http://qrcoder.ru/code/?https%3A%2F%2Fkirkors.mesto.nomoredomains.work&4&0" alt="" width="180" height="184"></a>
 
