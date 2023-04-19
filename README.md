@@ -9,7 +9,7 @@
 * Github Pages
 * QR-код
 <ul>
-  <li><a href="desc">Описание</a></li>
+  <li><a href="#desc">Описание</a></li>
 
 ### **Описание**
 ---
